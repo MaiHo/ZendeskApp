@@ -1,0 +1,41 @@
+<img class="customerpic" src="{{user.iconUrl}}">
+<table>
+<tr>
+  <td class="fieldname">Name:</td>
+  <td class="data"><a href="../../users/{{user.id}}" target="_blank">{{user.name}}</a></td>
+</tr>
+{{#if user.organization_id}}
+<tr>
+  <td class="fieldname">Organization:</td>
+  <td class="data">{{user.organization_name}}</td>
+</tr>
+{{/if}}
+<tr>
+  <td class="fieldname">Email:</td>
+  <td class="data">{{user.email}}</td>
+</tr>
+<tr>
+  <td class="fieldname">Last sign-in:</td>
+  <td class="data">{{user.last_login_at}}</td>
+</tr>
+</table>
+<hr>
+<h4>Orders</h4>
+<table class="ordertable">
+<tr>
+  <td class="fieldname">Total Orders:</td>
+  <td class="data order_total"><span class="faint">(Not loaded)</span></td>
+</tr>
+<tr>
+  <td class="fieldname">Widgets:</td>
+  <td class="data order_widget"><span class="faint">(Not loaded)</span></td>
+</tr>
+<tr>
+  <td class="fieldname">Doodads:</td>
+  <td class="data order_doodad"><span class="faint">(Not loaded)</span></td>
+</tr>
+<tr>
+  <td class="fieldname">Gewgaws:</td>
+  <td class="data order_gewgaw"><span class="faint">(Not loaded)</span></td>
+</tr>
+</table>

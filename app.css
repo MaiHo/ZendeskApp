@@ -1,0 +1,29 @@
+.customerpic {
+  height:50px;
+  width:50px;
+  margin:5px;
+  float:left;
+  border:1px solid gray;
+}
+.fieldname {
+  font-weight:bold;
+}
+.data {
+  padding-left:6px;
+  color:#666;
+}
+.faint {
+  color:#999;
+}
+.errortext {
+  color:#f99;
+}
+.orderbutton {
+  cursor:pointer;
+}
+.vip::after {
+  background-color:#ff9;
+  content:"(VIP)";
+  font-weight:bold;
+  font-size:0.8em;
+}
