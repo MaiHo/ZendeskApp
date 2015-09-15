@@ -14,8 +14,9 @@
 
     requests: {
       hmcGetRequest: function(email) {
+        var webroot = 'http://ec2-52-24-133-26.us-west-2.compute.amazonaws.com:5000';
         return {
-          url: 'TODO TODO TODO', // TODO
+          url: webroot + '/api/' + email,
           type: 'GET',
           dataType: 'json'
         };
@@ -50,7 +51,7 @@
     },
 
     getOrders: function() {
-      if ( this.$('ordertable').length ) {
+      if ( this.$('.ordertable').length ) {
         var email = this.ticket().requester().email();
         this.ajax('hmcGetRequest', email);
       } else {
@@ -61,12 +62,12 @@
     showOrders: function(data) {
       ['total', 'widget', 'doodad', 'gewgaw'].forEach(
         function(currVal) {
-          numOrders = data.orders[currVal];
-          orderField = this.$('order_' + currVal);
+          var numOrders = data.orders[currVal];
+          var orderField = this.$('.order_' + currVal);
           orderField.text(numOrders);
           if (numOrders >= VIP_COUNT) {
             this.ticket().tags().add('vip_' + currVal);
-            orderField.html('span class="vip">' + orderField.text() + '</span>');
+            orderField.html('<span class="vip">' + orderField.text() + '</span>');
           }
         }.bind(this) //preserve meaning of this inside forEach
       );
@@ -78,7 +79,7 @@
       // as part of the user object, but it wasn't entirely clear to
       // me how to access it, so I'm shovin' it in myself.
       data.user.iconUrl = this.ticket().requester().avatarUrl();
-      if (data.user.organization_id == null) { // TODO == or ===?
+      if (data.user.organization_id == null) {
         this.switchTo('customer_info', data);
       } else {
         this.ajax('orgGetRequest', data.user.organization_id).then(
@@ -95,15 +96,6 @@
 
     showError: function() {
       this.switchTo('error');
-    },
-
-    showDefault: function() {
-      // PLAN: have this appear by default,
-      // containing a BUTTON to load info instead of
-      // doing it on app.activated.
-      // gonna need to figure out how apps hook into
-      // non-framework events?
-      this.switchTo('empty');
     }
   };
 
